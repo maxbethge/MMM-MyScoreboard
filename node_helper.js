@@ -29,7 +29,7 @@ module.exports = NodeHelper.create({
   },
 
   socketNotificationReceived: function(notification, payload) {
-    Log.log('[MMM-MyScoreboard] ' + payload.instanceId + ' - socketNotificationReceived; ' + notification);
+    Log.log('[MMM-MyScoreboard] ' + payload.instanceId + ' - socketNotificationReceived: ' + notification);
     if (notification == "MMM-MYSCOREBOARD-GET-SCORES") {
 
       /*

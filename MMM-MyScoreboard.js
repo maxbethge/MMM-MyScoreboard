@@ -600,8 +600,9 @@
         every two minutes should be more than fine for our purposes.
       */
       this.sendToLog('setInterval');
+      var self = this;
       setInterval(() => {
-        this.getScores();
+        self.getScores();
       }, 2 * 60 * 1000);
 
 
