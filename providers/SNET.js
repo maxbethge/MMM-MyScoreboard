@@ -16,6 +16,11 @@
   All sports are provided in a single feed at
   https://mobile-statsv2.sportsnet.ca/ticker
 
+  Updated to get current scores
+  https://forum.magicmirror.builders/post/118572
+  https://stats-api.sportsnet.ca/ticker
+
+
   The feed takes one parameter:
 
     day - YYYY-MM-DD (e.g. 2018-11-20)
@@ -109,7 +114,7 @@ module.exports = {
     // console.log("Get SNET JSON");
     var self = this;
 
-    var url = "https://mobile-statsv2.sportsnet.ca/ticker?day=" + this.gameDate.format("YYYY-MM-DD");
+    var url = "https://stats-api.sportsnet.ca/ticker?day=" + this.gameDate.format("YYYY-MM-DD");
 
 
     axios.get(url)
