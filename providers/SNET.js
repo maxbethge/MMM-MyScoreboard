@@ -136,12 +136,17 @@ module.exports = {
   getLeague: function(league, teams) {
     console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " getLeague: " + league + ", " + teams );  
     var self = this;
-
-    var filteredGames = this.scoresObj.data.games.filter(function(game) {
-      return(game.league.toUpperCase() == league.toUpperCase() &&
-        (teams == null || teams.indexOf(game.home_team.short_name.toUpperCase()) != -1 ||
-          teams.indexOf(game.visiting_team.short_name.toUpperCase()) != -1) );
-    });
+    
+    if(this.scoresObj.data.games) {
+      var filteredGames = this.scoresObj.data.games.filter(function(game) {
+        return(game.league.toUpperCase() == league.toUpperCase() &&
+          (teams == null || teams.indexOf(game.home_team.short_name.toUpperCase()) != -1 ||
+            teams.indexOf(game.visiting_team.short_name.toUpperCase()) != -1) );
+      });
+    }
+    else {
+      console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " getLeague: no games today"); 
+    }
 
 
     /*
