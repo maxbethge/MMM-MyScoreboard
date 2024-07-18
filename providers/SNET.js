@@ -71,7 +71,7 @@ module.exports = {
   gameDate: null,
 
   getScores: function(league, teams, gameDate, callback) {
-    
+    console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " getScores: " + gameDate + ", " + league + ", " + teams );
     var self = this;
     this.gameDate = moment(gameDate);
 
@@ -120,7 +120,11 @@ module.exports = {
     axios.get(url)
       .then( function(response) {
         if(response.data.data) {
+          console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " getData: got good reponse" );
           self.scoresObj = response.data;
+        }
+        else {
+          console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " getData: no data?" );
         }
       })
       .catch( function(r_err) {
@@ -130,7 +134,7 @@ module.exports = {
 
 
   getLeague: function(league, teams) {
-
+    console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " getLeague: " + league + ", " + teams );  
     var self = this;
 
     var filteredGames = this.scoresObj.data.games.filter(function(game) {
